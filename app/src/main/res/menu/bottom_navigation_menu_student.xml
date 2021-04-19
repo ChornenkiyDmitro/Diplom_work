@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/pageSearch"
+        android:enabled="true"
+        android:icon="@drawable/ic_search_teacher_24"
+        android:title="@string/search_teacher"/>
+
+    <item
+        android:id="@+id/pageСalendar"
+        android:enabled="true"
+        android:icon="@drawable/ic_calendar_24"
+        android:title="@string/calendar"/>
+
+    <item
+        android:id="@+id/pageMessage"
+        android:enabled="true"
+        android:icon="@drawable/ic_message_24"
+        android:title="@string/massage"/>
+
+    <item
+        android:id="@+id/pageProfile"
+        android:enabled="true"
+        android:icon="@drawable/ic_profile_24"
+        android:title="@string/profile"/>
+</menu>

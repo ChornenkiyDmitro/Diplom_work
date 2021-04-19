@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textQuestionChoice"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="Who are you ?"/>
+
+    <LinearLayout
+        android:id="@+id/caseChoice"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/buttonTeacher"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="I am teacher"/>
+
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/buttonStudent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="I am student"/>
+
+    </LinearLayout>
+
+</LinearLayout>

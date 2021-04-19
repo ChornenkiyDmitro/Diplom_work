@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/caseSignUp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textQuestionSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Are you new here?"/>
+
+        <TextView
+            android:id="@+id/textSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sing Up"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/caseSignIn"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textQuestionSignIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Have you been here before?"/>
+
+        <TextView
+            android:id="@+id/textSignIn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sing In"/>
+
+    </LinearLayout>
+</LinearLayout>

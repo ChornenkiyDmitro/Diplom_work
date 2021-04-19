@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">Diplom</string>
+
+    //Subjects
+    <string-array name="teacherSubjects">
+        <item>English</item>
+        <item>German</item>
+        <item>French</item>
+        <item>Ukrainian</item>
+        <item>Mathematics</item>
+        <item>Physics</item>
+        <item>Chemistry</item>
+        <item>History</item>
+    </string-array>
+
+    //City
+    <string-array name="city">
+        <item>Kyiv</item>
+        <item>Kharkiv</item>
+        <item>Odesa</item>
+        <item>Dnipro</item>
+        <item>Lviv</item>
+    </string-array>
+    
+    //Bottom navigation menu 
+    <string name="search_teacher">Search</string>
+    <string name="calendar">Calendar</string>
+    <string name="massage">Massage</string>
+    <string name="profile">Profile</string>
+</resources>
