@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    //Text
+    <dimen name="text_size_24dp">24dp</dimen>
+    <dimen name="text_size_20dp">20dp</dimen>
+
+    //View padding
+    <dimen name="view_padding_5dp">5dp</dimen>
+
+    //View margin
+    <dimen name="view_margin_8dp">8dp</dimen>
+    <dimen name="view_margin_120dp">120dp</dimen>
+    <dimen name="view_margin_180dp">180dp</dimen>
+    <dimen name="view_margin_20dp">20dp</dimen>
+
+    //Viw size
+    <dimen name="view_size_40dp">40dp</dimen>
+</resources>

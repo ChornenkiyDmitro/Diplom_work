@@ -26,16 +26,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/view_margin_8dp"
         android:layout_marginLeft="@dimen/view_margin_8dp"
-        android:layout_marginRight="@dimen/view_margin_120dp"
+        android:layout_marginRight="@dimen/view_margin_180dp"
         android:text="Surname"/>
-
-    <ImageView
-        android:id="@+id/imageSeeProfile"
-        android:layout_width="@dimen/view_size_40dp"
-        android:layout_height="@dimen/view_size_40dp"
-        android:layout_gravity="center_vertical"
-        android:layout_marginRight="@dimen/view_margin_20dp"
-        android:background="@drawable/ic_profile_search_24"/>
 
     <ImageView
         android:id="@+id/imageWriteMessage"
