@@ -1,4 +1,4 @@
-package com.example.diplom.presentation
+package com.example.diplom.presentation.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
