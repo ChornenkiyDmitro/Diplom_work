@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.diplom.R
 import com.example.diplom.presentation.main.MainActivity
 import com.example.diplom.presentation.registration.RegistrationActivity
+import com.example.diplom.presentation.welcome.WelcomeActivity
 
 class Splash: AppCompatActivity() {
 
@@ -15,7 +16,7 @@ class Splash: AppCompatActivity() {
         setContentView(R.layout.activity_splash)
 
         Handler().postDelayed({
-            val nextScreen = Intent(this, RegistrationActivity::class.java)
+            val nextScreen = Intent(this, WelcomeActivity::class.java)
             startActivity(nextScreen)
             finish()
         }, 3000)
