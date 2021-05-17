@@ -10,7 +10,6 @@ import com.example.diplom.presentation.registration.sign_in.SignInFragment
 import com.example.diplom.presentation.registration.sign_up.SignUpChoiceFragment
 import com.example.diplom.presentation.registration.sign_up.SignUpTeacherFragment
 import com.example.diplom.presentation.registration.sign_up.SingUpStudentFragment
-import com.example.diplom.presentation.registration.wellcome.RegistrationFragment
 
 
 class RegistrationActivity: AppCompatActivity(), OnFragmentChangeListener {
@@ -19,15 +18,12 @@ class RegistrationActivity: AppCompatActivity(), OnFragmentChangeListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registration)
 
-        startRegistration()
+        when (intent.extras!!.getInt("frgToLoad")) {
+            1 -> signIn()
+            2 -> choiceSignUp()
+        }
     }
 
-    private fun startRegistration(){
-        val fragmentManager: FragmentManager = supportFragmentManager
-        val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.caseFragmentRegistration, RegistrationFragment())
-        fragmentTransaction.commit()
-    }
 
     private fun choiceSignUp(){
         val fragmentManager: FragmentManager = supportFragmentManager
