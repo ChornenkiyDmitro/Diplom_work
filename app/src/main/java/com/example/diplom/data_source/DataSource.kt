@@ -9,15 +9,21 @@ import io.reactivex.schedulers.Schedulers
 
 interface DataSource{
 
-    fun findByCriterion(subject: String, city: String): Single<List<UserEntity>>
+    fun showTeacher(type: Int): Single<List<UserEntity>>
+    fun findByCriterion(type: Int, subject: String, city: String): Single<List<UserEntity>>
     fun insertUser(user: UserEntity): Completable
-
 }
 
 class DataSourceImpl(private val database: AppDataBase):DataSource{
 
-    override fun findByCriterion(subject: String, city: String): Single<List<UserEntity>> {
-       return Single.just(database.getUserDao().findByCriterion(subject, city))
+    override fun showTeacher(type: Int): Single<List<UserEntity>> {
+        return Single.just(database.getUserDao().showTeacher(type))
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+    }
+
+    override fun findByCriterion(type: Int, subject: String, city: String): Single<List<UserEntity>> {
+       return Single.just(database.getUserDao().findByCriterion(type, subject, city))
            .observeOn(AndroidSchedulers.mainThread())
            .subscribeOn(Schedulers.io())
     }

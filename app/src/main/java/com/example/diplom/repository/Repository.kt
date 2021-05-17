@@ -8,7 +8,8 @@ import io.reactivex.Single
 
 interface Repository {
 
-    fun findByCriterion(subject: String, city: String): Single<List<UserEntity>>
+    fun showTeacher(type: Int): Single<List<UserEntity>>
+    fun findByCriterion(type: Int, subject: String, city: String): Single<List<UserEntity>>
     fun insertUser(user: UserEntity): Completable
 
 }
@@ -17,8 +18,13 @@ class RepositoryImpl(
     private val dataSource: DataSource,
     private val remoteDataSource: RemoteDataSource
 ): Repository{
-    override fun findByCriterion(subject: String, city: String): Single<List<UserEntity>> {
-        return dataSource.findByCriterion(subject, city)
+
+    override fun showTeacher(type: Int): Single<List<UserEntity>> {
+        return dataSource.showTeacher(type)
+    }
+
+    override fun findByCriterion(type: Int, subject: String, city: String): Single<List<UserEntity>> {
+        return dataSource.findByCriterion(type, subject, city)
     }
 
     override fun insertUser(user: UserEntity): Completable {

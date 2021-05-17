@@ -5,15 +5,15 @@ import com.example.diplom.repository.Repository
 import io.reactivex.Single
 
 interface FindByCriterionUseCase {
-   fun findByCriterion(subject: String, city: String): Single<List<UserEntity>>
+   fun findByCriterion(type: Int, subject: String, city: String): Single<List<UserEntity>>
 }
 
 class FindByCriterionUseCaseImpl(
     private val repository: Repository
 ): FindByCriterionUseCase{
 
-    override fun findByCriterion(subject: String, city: String): Single<List<UserEntity>> {
-        return  repository.findByCriterion(subject, city)
+    override fun findByCriterion(type: Int, subject: String, city: String): Single<List<UserEntity>> {
+        return  repository.findByCriterion(type, subject, city)
     }
 
 }

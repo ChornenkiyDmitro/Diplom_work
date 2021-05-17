@@ -1,10 +1,7 @@
 package com.example.diplom.di.bilder
 
 import com.example.diplom.repository.Repository
-import com.example.diplom.use_case.FindByCriterionUseCase
-import com.example.diplom.use_case.FindByCriterionUseCaseImpl
-import com.example.diplom.use_case.InsertUserUseCase
-import com.example.diplom.use_case.InsertUserUseCaseImpl
+import com.example.diplom.use_case.*
 
 class UseCaseBuilder {
 
@@ -13,4 +10,7 @@ class UseCaseBuilder {
 
     fun initInsertUserUseCase(repository: Repository):
             InsertUserUseCase = InsertUserUseCaseImpl(repository)
+
+    fun initShowTeacherUseCase(repository: Repository):
+            ShowTeacherUseCase =ShowTeacherUseCaseImpl(repository)
 }

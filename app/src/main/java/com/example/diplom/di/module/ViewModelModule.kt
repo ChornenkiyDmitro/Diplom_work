@@ -8,6 +8,6 @@ import org.koin.dsl.module
 
 @Keep
 val viewModelModule = module(override = true) {
-    viewModel { MainViewModel(get()) }
+    viewModel { MainViewModel(get(), get()) }
     viewModel { RegistrationViewModel(get()) }
 }
