@@ -11,7 +11,7 @@ interface Repository {
     fun showTeacher(type: Int): Single<List<UserEntity>>
     fun findByCriterion(type: Int, subject: String, city: String): Single<List<UserEntity>>
     fun insertUser(user: UserEntity): Completable
-
+    fun signInUser(email: String, pass: String): Single<UserEntity>
 }
 
 class RepositoryImpl(
@@ -29,6 +29,10 @@ class RepositoryImpl(
 
     override fun insertUser(user: UserEntity): Completable {
         return dataSource.insertUser(user)
+    }
+
+    override fun signInUser(email: String, pass: String): Single<UserEntity> {
+        return dataSource.signInUser(email, pass)
     }
 
 }

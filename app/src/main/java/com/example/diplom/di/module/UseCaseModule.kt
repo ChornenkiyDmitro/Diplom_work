@@ -10,4 +10,5 @@ val useCaseModule = module {
     single { get<UseCaseBuilder>().initFindByCriterionUseCase(get()) }
     single { get<UseCaseBuilder>().initInsertUserUseCase(get()) }
     single { get<UseCaseBuilder>().initShowTeacherUseCase(get()) }
+    single { get<UseCaseBuilder>().initSignInUserUseCase(get()) }
 }

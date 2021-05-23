@@ -11,7 +11,8 @@
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="Who are you ?"/>
+        android:text="Who are you ?"
+        android:textSize="36sp"/>
 
     <LinearLayout
         android:id="@+id/caseChoice"
@@ -22,16 +23,18 @@
 
         <Button
             android:id="@+id/buttonTeacher"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_margin="25dp"
             android:text="I am teacher"/>
 
         <Button
-            android:layout_weight="1"
             android:id="@+id/buttonStudent"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="25dp"
             android:text="I am student"/>
 
     </LinearLayout>

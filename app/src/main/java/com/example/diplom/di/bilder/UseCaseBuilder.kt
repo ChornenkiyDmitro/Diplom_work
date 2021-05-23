@@ -13,4 +13,7 @@ class UseCaseBuilder {
 
     fun initShowTeacherUseCase(repository: Repository):
             ShowTeacherUseCase =ShowTeacherUseCaseImpl(repository)
+
+    fun initSignInUserUseCase(repository: Repository):
+            SignInUserUseCase = SignInUserUseCaseImpl(repository)
 }

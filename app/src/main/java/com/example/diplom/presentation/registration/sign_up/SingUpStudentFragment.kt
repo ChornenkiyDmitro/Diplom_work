@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import com.example.diplom.R
 import com.example.diplom.data_source.database.entity.UserEntity
 import com.example.diplom.presentation.main.MainActivity
+import com.example.diplom.presentation.welcome.WelcomeActivity
 import com.example.diplom.view_model.RegistrationViewModel
 import kotlinx.android.synthetic.main.fragment_sing_up_student.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -62,8 +63,7 @@ class SingUpStudentFragment: Fragment() {
     }
 
     private fun goNextScreen(){
-        val nextScreen = Intent (activity, MainActivity::class.java)
-        nextScreen.putExtra("typeUser", 1)
+        val nextScreen = Intent (activity, WelcomeActivity::class.java)
         startActivity(nextScreen)
     }
 }

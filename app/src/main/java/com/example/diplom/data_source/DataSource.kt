@@ -12,6 +12,7 @@ interface DataSource{
     fun showTeacher(type: Int): Single<List<UserEntity>>
     fun findByCriterion(type: Int, subject: String, city: String): Single<List<UserEntity>>
     fun insertUser(user: UserEntity): Completable
+    fun signInUser(email: String, pass: String): Single<UserEntity>
 }
 
 class DataSourceImpl(private val database: AppDataBase):DataSource{
@@ -32,6 +33,12 @@ class DataSourceImpl(private val database: AppDataBase):DataSource{
       return Completable.fromAction {database.getUserDao().insertUser(user = user)}
           .observeOn(AndroidSchedulers.mainThread())
           .subscribeOn(Schedulers.io())
+    }
+
+    override fun signInUser(email: String, pass: String): Single<UserEntity>{
+        return Single.just(database.getUserDao().signInUser(email, pass))
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
     }
 
 }
