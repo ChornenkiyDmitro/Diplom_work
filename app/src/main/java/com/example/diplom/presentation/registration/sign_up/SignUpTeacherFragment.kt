@@ -2,17 +2,14 @@ package com.example.diplom.presentation.registration.sign_up
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
 import androidx.fragment.app.Fragment
 import com.example.diplom.R
-import com.example.diplom.data_source.database.entity.UserEntity
-import com.example.diplom.presentation.main.MainActivity
 import com.example.diplom.presentation.welcome.WelcomeActivity
+import com.example.diplom.remote_data_source.pojo.UserFareBase
 import com.example.diplom.view_model.RegistrationViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
@@ -43,13 +40,12 @@ class SignUpTeacherFragment: Fragment() {
         val city = spinnerCityT.getSelectedItem().toString().trim()
         val subject = spinnerSubjectsT.getSelectedItem().toString().trim()
 
-        if (inputCheck(name, surname, email, pass)){
+        if (validate(name, surname, email, pass)){
 
           FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, pass)
                 .addOnCompleteListener {
                     if (it.isSuccessful){
-                        val userInsert = UserEntity(
-                            0,
+                        val userInsert = UserFareBase(
                             2,
                             email,
                             name,
@@ -65,6 +61,7 @@ class SignUpTeacherFragment: Fragment() {
                                 if (it.isSuccessful){
                                     Toast.makeText(activity, "User is added", Toast.LENGTH_LONG)
                                         .show()
+                                    goNextScreen()
                                 } else{
                                     Toast.makeText(activity, "Try again", Toast.LENGTH_LONG)
                                         .show()
@@ -75,15 +72,15 @@ class SignUpTeacherFragment: Fragment() {
                             .show()
                     }
                 }
-            //goNextScreen()
+
+        } else{
+            Toast.makeText(activity, "Enter all data", Toast.LENGTH_SHORT)
+                .show()
         }
     }
 
-    private fun inputCheck(name: String, surname: String, email: String, pass: String): Boolean {
-        return !(TextUtils.isEmpty(name)
-                && TextUtils.isEmpty(surname)
-                && TextUtils.isEmpty(email)
-                && TextUtils.isEmpty(pass))
+    private fun validate(name: String, surname: String, email: String, pass: String): Boolean {
+        return name.isNotEmpty() && surname.isNotEmpty() && email.isNotEmpty() && pass.isNotEmpty()
     }
 
     private fun goNextScreen(){

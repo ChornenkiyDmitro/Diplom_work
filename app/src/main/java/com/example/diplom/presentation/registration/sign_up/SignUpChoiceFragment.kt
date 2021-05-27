@@ -40,6 +40,5 @@ class SignUpChoiceFragment : Fragment() {
                 listener!!.onRout("student")
             }
         }
-
     }
 }

@@ -1,15 +1,9 @@
-package com.example.diplom.data_source.database.entity
+package com.example.diplom.remote_data_source.pojo
 
 import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
 
-@Entity(tableName = "user")
-data class UserEntity(
-
-    @PrimaryKey(autoGenerate = false)
-    val id: String,
-
+data class UserFareBase
+    (
     @ColumnInfo(name = "type")
     val type: Int,
 

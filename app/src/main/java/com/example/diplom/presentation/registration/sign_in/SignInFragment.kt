@@ -12,7 +12,9 @@ import androidx.lifecycle.Observer
 import com.example.diplom.R
 import com.example.diplom.data_source.database.entity.UserEntity
 import com.example.diplom.presentation.main.MainActivity
+import com.example.diplom.presentation.welcome.WelcomeActivity
 import com.example.diplom.view_model.RegistrationViewModel
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_sign_in.*
 import kotlinx.android.synthetic.main.fragment_sing_up_teacher.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -30,8 +32,6 @@ class SignInFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        Toast.makeText(activity, "Toast", Toast.LENGTH_SHORT).show()
-
         buttonSingIn.setOnClickListener {
             takeUserAndGo()
         }
@@ -43,30 +43,29 @@ class SignInFragment: Fragment() {
         val pass = edittextPassword.text.toString()
 
         if (inputCheck(email, pass)){
-            registrationViewModel?.checkUser(email, pass)
-            registrationViewModel?.checkedUser?.observe(
-                    viewLifecycleOwner,
-                    Observer<UserEntity> {
-                        user->
-                        if (user == null) {
-                                    Toast.makeText(activity, "Error, user is not found", Toast.LENGTH_LONG).show()
-                                } else{
-                            Toast.makeText(activity, "Welcome ${user.name}", Toast.LENGTH_LONG)
-                            var typeUser = user.type
-                            val nextScreenGo = Intent(activity, MainActivity::class.java)
-                            nextScreenGo.putExtra("typeUser", typeUser)
-                            startActivity(nextScreenGo)
-                            activity?.finishAffinity()
-                        }
+
+            FirebaseAuth.getInstance().signInWithEmailAndPassword(email, pass)
+                .addOnCompleteListener {
+                    if (it.isSuccessful){
+                        Toast.makeText(activity, "User is real", Toast.LENGTH_SHORT)
+                            .show()
+                        goNextScreen()
+                    } else {
+                        Toast.makeText(activity, "Error, check the date", Toast.LENGTH_SHORT)
+                            .show()
                     }
-            )
+                }
         } else {
             Toast.makeText(activity, "Error, email or pass is empty", Toast.LENGTH_LONG).show()
         }
     }
 
     private fun inputCheck(email: String, pass: String): Boolean {
-        return !(TextUtils.isEmpty(email)
-                && TextUtils.isEmpty(pass))
+        return email.isNotEmpty() && pass.isNotEmpty()
+    }
+
+    private fun goNextScreen(){
+        val nextScreen = Intent (activity, MainActivity::class.java)
+        startActivity(nextScreen)
     }
 }

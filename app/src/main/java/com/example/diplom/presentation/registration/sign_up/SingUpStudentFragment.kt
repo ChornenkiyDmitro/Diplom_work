@@ -6,12 +6,16 @@ import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.diplom.R
 import com.example.diplom.data_source.database.entity.UserEntity
 import com.example.diplom.presentation.main.MainActivity
 import com.example.diplom.presentation.welcome.WelcomeActivity
+import com.example.diplom.remote_data_source.pojo.UserFareBase
 import com.example.diplom.view_model.RegistrationViewModel
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.fragment_sing_up_student.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -39,27 +43,42 @@ class SingUpStudentFragment: Fragment() {
         val city = spinnerCityS.getSelectedItem().toString()
 
         if (inputCheck(name, surname, email, pass)){
-            val userInsert = UserEntity(
-                0,
-                1,
-                email,
-                name,
-                surname,
-                pass,
-                city,
-                "nothing"
-            )
-            registrationViewModel?.insertUser(userInsert)
+        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, pass)
+            .addOnCompleteListener {
+                if (it.isSuccessful){
+                    val userInsert = UserFareBase(
+                        1,
+                        email,
+                        name,
+                        surname,
+                        pass,
+                        city,
+                        "nothing"
+                    )
 
-            goNextScreen()
+                    FirebaseDatabase.getInstance().getReference("Users")
+                        .child(FirebaseAuth.getInstance().currentUser!!.uid)
+                        .setValue(userInsert).addOnCompleteListener {
+                            if (it.isSuccessful){
+                                Toast.makeText(activity, "User is added", Toast.LENGTH_LONG)
+                                    .show()
+                                goNextScreen()
+                            } else{
+                                Toast.makeText(activity, "Try again", Toast.LENGTH_LONG)
+                                    .show()
+                            }
+                        }
+                } else{
+                    Toast.makeText(activity, "Try again", Toast.LENGTH_LONG)
+                        .show()
+                }
+            }
+
         }
     }
 
     private fun inputCheck(name: String, surname: String, email: String, pass: String): Boolean {
-        return !(TextUtils.isEmpty(name)
-                && TextUtils.isEmpty(surname)
-                && TextUtils.isEmpty(email)
-                && TextUtils.isEmpty(pass))
+        return name.isNotEmpty() && surname.isNotEmpty() && email.isNotEmpty() && pass.isNotEmpty()
     }
 
     private fun goNextScreen(){
